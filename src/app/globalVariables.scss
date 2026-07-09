@@ -1,0 +1,44 @@
+// src/app/globalVariables.scss
+// ─────────────────────────────────────────────────────────────────────────────
+// Craftline Cabinetry & Millwork — Brand Tokens
+//
+// THREE DISTINCT FONTS:
+//   $titleFont  → Barlow Condensed  — bold condensed display (hero h1, section titles)
+//   $headerFont → Outfit            — clean geometric sans   (nav, card titles, labels, CTAs)
+//   $textFont   → Inter             — refined humanist sans  (body copy, form text, paragraphs)
+//
+// Usage guide:
+//   h1, .hero headline              → $titleFont  (uppercase, tight tracking)
+//   h2, h3, nav links, btn text     → $headerFont (medium weight, normal case)
+//   p, label, input, small text     → $textFont   (regular/medium weight)
+// ─────────────────────────────────────────────────────────────────────────────
+
+$titleFont:  var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
+$headerFont: var(--font-outfit),           'Outfit',           sans-serif;
+$textFont:   var(--font-inter),            'Inter',            sans-serif;
+
+// ── Core Palette ─────────────────────────────────────────────────────────────
+$black:      #000000;
+$obsidian:   #1c1410;
+$blackflat:  #2a1f18;
+$white:      #FFFFFF;
+$offwhite:   #faf7f2;
+
+// Greys (warm wood-tinted)
+$darkgrey:   #a89078;
+$grey:       #6b5644;
+$lightgrey:  #e8dcc8;
+
+// Brand Accent — warm wood amber
+$orange:     #b45309;
+$lightorange:#d97706;
+$darkorange: #92400e;
+
+// Legacy aliases
+$green:      $orange;
+$lightgreen: $lightorange;
+$darkgreen:  $darkorange;
+$blue:       #1e6fa8;
+
+// Error
+$danger-red: #ef4444;
