@@ -1,44 +1,30 @@
-// src/app/globalVariables.scss
-// ─────────────────────────────────────────────────────────────────────────────
-// Craftline Cabinetry & Millwork — Brand Tokens
-//
-// THREE DISTINCT FONTS:
-//   $titleFont  → Barlow Condensed  — bold condensed display (hero h1, section titles)
-//   $headerFont → Outfit            — clean geometric sans   (nav, card titles, labels, CTAs)
-//   $textFont   → Inter             — refined humanist sans  (body copy, form text, paragraphs)
-//
-// Usage guide:
-//   h1, .hero headline              → $titleFont  (uppercase, tight tracking)
-//   h2, h3, nav links, btn text     → $headerFont (medium weight, normal case)
-//   p, label, input, small text     → $textFont   (regular/medium weight)
-// ─────────────────────────────────────────────────────────────────────────────
+// Auto uniqueness tokens — custom millwork atelier
+$titleFont:  var(--font-title),  'Cormorant Garamond', sans-serif;
+$headerFont: var(--font-header), 'Josefin Sans', sans-serif;
+$textFont:   var(--font-body),   'Crimson Text', sans-serif;
 
-$titleFont:  var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-$headerFont: var(--font-outfit),           'Outfit',           sans-serif;
-$textFont:   var(--font-inter),            'Inter',            sans-serif;
-
-// ── Core Palette ─────────────────────────────────────────────────────────────
 $black:      #000000;
-$obsidian:   #1c1410;
-$blackflat:  #2a1f18;
+$obsidian:   #1a120b;
+$blackflat:  #1a120b;
 $white:      #FFFFFF;
-$offwhite:   #faf7f2;
+$offwhite:   #fffbeb;
 
-// Greys (warm wood-tinted)
-$darkgrey:   #a89078;
-$grey:       #6b5644;
-$lightgrey:  #e8dcc8;
+$darkgrey:   #94a3b8;
+$grey:       #64748b;
+$lightgrey:  #e2e8f0;
 
-// Brand Accent — warm wood amber
 $orange:     #b45309;
 $lightorange:#d97706;
-$darkorange: #92400e;
+$darkorange: #78350f;
 
-// Legacy aliases
 $green:      $orange;
 $lightgreen: $lightorange;
 $darkgreen:  $darkorange;
-$blue:       #1e6fa8;
+$blue:       #b45309;
 
-// Error
+$radius-sm:  10px;
+$radius-md:  16px;
+$radius-lg:  22px;
+$radius-pill: 999px;
+
 $danger-red: #ef4444;

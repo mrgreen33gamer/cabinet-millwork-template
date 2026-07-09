@@ -19,7 +19,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Comparison',
     date:     'April 18, 2026',
     readTime: 8,
-    imageSrc: '/pages/blogs/heat-pump.jpg',
+    imageSrc: '/pages/home/services/service-1.jpg',
     imageAlt: 'Custom vs semi-custom cabinets comparison for Waco Texas homes',
     featured: true,
   },
@@ -30,7 +30,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Materials',
     date:     'April 14, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/hvac-filter.jpg',
+    imageSrc: '/pages/home/services/service-2.jpg',
     imageAlt: 'Cabinet material choices for Central Texas humidity and homes',
   },
   {
@@ -40,7 +40,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Replacement',
     date:     'April 10, 2026',
     readTime: 6,
-    imageSrc: '/pages/blogs/ac-replacement.jpg',
+    imageSrc: '/pages/home/welcome/hero-main.jpg',
     imageAlt: 'Signs cabinets need refinishing or replacement in Waco TX',
   },
 ];

@@ -10,7 +10,7 @@
 //     - colorScheme: 'dark'   → tells the browser to render its own UI chrome
 //                                (form pickers, scrollbars, etc.) in dark mode.
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, ABeeZee } from "next/font/google";
+import { Cormorant_Garamond, Josefin_Sans, Crimson_Text } from "next/font/google";
 import "./globals.css";
 import "./globalVariables.scss";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -34,20 +34,28 @@ import reviews from "../../libs/local-db/reviews";
 
 config.autoAddCss = false;
 
-// ── FONTS ─────────────────────────────────────────────────────────────────────
-const barlowCondensed = Barlow_Condensed({
-  weight: ["400", "500", "600", "700", "800"],
+// ── FONTS — uniqueness
+const fontTitle = Cormorant_Garamond({
+  weight: ["400","500","600","700"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-barlow-condensed",
+  variable: "--font-title",
 });
 
-const aBeeZee = ABeeZee({
-  weight: ["400"],
+const fontHeader = Josefin_Sans({
+  weight: ["400","500","600","700"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-abeezee",
+  variable: "--font-header",
 });
+
+const fontBody = Crimson_Text({
+  weight: ["400","600","700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
 
 const isProduction = process.env.NODE_ENV === "production";
 const BASE_URL = isProduction
@@ -59,8 +67,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit:  "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1c1410" },
-    { media: "(prefers-color-scheme: dark)",  color: "#1c1410" },
+    { media: "(prefers-color-scheme: light)", color: "#1a120b" },
+    { media: "(prefers-color-scheme: dark)",  color: "#1a120b" },
   ],
   colorScheme: "dark",
 };
@@ -226,7 +234,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlowCondensed.variable} ${aBeeZee.variable}`}
+      className={`${fontTitle.variable} ${fontHeader.variable} ${fontBody.variable}`}
     >
       <head>
         <script
@@ -255,7 +263,7 @@ export default function RootLayout({
                   alignItems: "center",
                   width: "100%",
                   height: "100vh",
-                  background: "#1c1410",
+                  background: "#1a120b",
                 }}
               >
                 <PulseLoader size={50} color="#b45309" />

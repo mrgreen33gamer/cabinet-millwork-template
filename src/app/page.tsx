@@ -35,36 +35,42 @@ export default function HomePage() {
       title: "Custom Cabinets",
       body: "Fully custom kitchen and bath cabinets built in our Waco shop — door styles, species, and finishes matched to your home.",
       link: "/services/custom-cabinets",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faRulerCombined,
       title: "Kitchen Remodel Millwork",
       body: "Cabinets, islands, pantries, and trim millwork coordinated as one remodel package — design through install.",
       link: "/services/kitchen-remodel-millwork",
+      image: "/pages/home/services/service-2.jpg",
     },
     {
       icon: faSink,
       title: "Bathroom Vanities",
       body: "Custom vanities and storage built to fit tight baths — soft-close hardware, durable finishes, clean install.",
       link: "/services/bathroom-vanities",
+      image: "/pages/home/services/service-3.jpg",
     },
     {
       icon: faBuilding,
       title: "Commercial Millwork",
       body: "Reception desks, display fixtures, and tenant millwork for offices, retail, and hospitality — on your schedule.",
       link: "/services/commercial-millwork",
+      image: "/pages/home/services/service-4.jpg",
     },
     {
       icon: faPaintRoller,
       title: "Cabinet Refacing",
       body: "New doors, drawer fronts, and hardware over solid boxes — a fraction of full replacement when boxes are sound.",
       link: "/services/cabinet-refacing",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faDoorOpen,
       title: "Closet & Built-Ins",
       body: "Walk-in closets, mudroom lockers, media walls, and office built-ins measured and built for how you live.",
       link: "/services/closet-built-ins",
+      image: "/pages/home/services/service-2.jpg",
     },
   ];
 
@@ -180,28 +186,16 @@ export default function HomePage() {
 
   return (
     <main className={styles.pageWrapper}>
-
       <WelcomePage />
-
       <TrustBar
         headline="Waco's trusted cabinet shop — licensed, insured, and warrantied on every project"
       />
-
-      <div className={styles.section}>
-        <ImpactMetrics
-          title="Numbers That Speak for Us"
-          metrics={metrics}
-          cityName="Waco"
-        />
-      </div>
-
       <div className={styles.section}>
         <ServiceCardComponent
           heading="Complete Cabinetry & Millwork Services"
           cards={services}
         />
       </div>
-
       <div className={styles.section}>
         <WhyChooseUs
           cityName="Waco"
@@ -209,50 +203,50 @@ export default function HomePage() {
           title="What Makes Craftline Different"
         />
       </div>
-
-      <CTABanner
-        headline="Ready for Cabinets Built the Right Way?"
-        subline="Free design consultations. Flat-rate quotes. 5-Year Craftsmanship Warranty. Serving Central Texas since 2008."
-        primaryText="Call (254) 741-2800"
-        primaryLink="tel:+12547412800"
-        secondaryText="Request a Free Quote"
-        secondaryLink="/contact"
-      />
-
       <div className={styles.section}>
         <ProcessTimeline steps={processSteps} />
       </div>
-
+      <div className={styles.section}>
+        <ImpactMetrics
+          title="Numbers That Speak for Us"
+          metrics={metrics}
+          cityName="Waco"
+        />
+      </div>
       <div className={styles.section}>
         <Testimonials testimonials={reviews} />
       </div>
-
       <div className={styles.section}>
         <GuaranteeSection />
       </div>
-
+      <CTABanner
+        headline="Cabinetry Built for How You Live."
+        subline="Custom millwork, refacing, and built-ins — design consults, material samples, and install crews who finish clean."
+        primaryText="Call (254) 741-2800"
+        primaryLink="tel:+12547412800"
+        secondaryText="Book Design Consult"
+        secondaryLink="/contact"
+      
+        imageSrc="/pages/home/welcome/hero-main.jpg"
+       />
       <div className={styles.section}>
         <LocalServiceAreas
           cityName="Waco"
           areas={localAreas}
         />
       </div>
-
       <div className={styles.section}>
         <WhatToExpect
           sectionTitle="What to Expect Working With Craftline"
           expectations={expectations}
         />
       </div>
-
       <div className={styles.section}>
         <FAQ cityName="Waco" faq={faq} title="Cabinetry Questions — Answered Straight" />
       </div>
-
       <div className={styles.section}>
         <BlogPreviewGrid />
       </div>
-
       <div className={styles.section}>
         <Variant4
           title="Get Your Free Cabinetry Quote"
@@ -262,7 +256,6 @@ export default function HomePage() {
           formVariant={4}
         />
       </div>
-
     </main>
   );
 }
