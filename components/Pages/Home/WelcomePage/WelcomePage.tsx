@@ -14,46 +14,54 @@ function MaterialsMosaic({
 }: {
   materials: Array<{ name: string; swatch: string; imageSrc?: string }>;
 }) {
-  // Mosaic span classes for visual interest (cycle pattern)
-  const spanClass = (i: number) => {
-    const mod = i % 6;
-    if (mod === 0) return styles.tileWide;
-    if (mod === 3) return styles.tileTall;
-    return '';
-  };
-
+  // Cabinet door / drawer style sample cards
   return (
-    <div className={styles.mosaic} role="list" aria-label="Material samples">
-      {materials.map((m, i) => (
-        <motion.div
-          key={`${m.name}-${i}`}
-          className={`${styles.tile} ${spanClass(i)}`}
-          role="listitem"
-          initial={{ opacity: 0, y: 18, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{
-            duration: 0.45,
-            delay: 0.35 + i * 0.07,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          <div
-            className={styles.tileFace}
-            style={{ backgroundColor: m.swatch }}
-          >
-            {m.imageSrc ? (
-              <img
-                src={m.imageSrc}
-                alt=""
-                className={styles.tileImage}
-                draggable={false}
-              />
-            ) : null}
-            <div className={styles.tileOverlay} aria-hidden="true" />
-          </div>
-          <span className={styles.tileName}>{m.name}</span>
-        </motion.div>
-      ))}
+    <div className={styles.doorGrid} role="list" aria-label="Cabinet door samples">
+      <div className={styles.doorGridHeader} aria-hidden="true">
+        <span className={styles.doorGridTitle}>Door Styles</span>
+        <span className={styles.doorGridMeta}>Shop samples</span>
+      </div>
+      <div className={styles.doorGridInner}>
+        {materials.map((m, i) => {
+          const isDrawer = i % 3 === 2;
+          return (
+            <motion.div
+              key={`${m.name}-${i}`}
+              className={`${styles.doorCard} ${isDrawer ? styles.drawerCard : ''}`}
+              role="listitem"
+              initial={{ opacity: 0, y: 20, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.45,
+                delay: 0.32 + i * 0.07,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <div
+                className={styles.doorFace}
+                style={{ backgroundColor: m.swatch }}
+              >
+                {m.imageSrc ? (
+                  <img
+                    src={m.imageSrc}
+                    alt=""
+                    className={styles.doorImage}
+                    draggable={false}
+                  />
+                ) : null}
+                <div className={styles.grainVeins} aria-hidden="true" />
+                <div className={styles.doorFrame} aria-hidden="true" />
+                <span className={styles.doorKnob} aria-hidden="true" />
+                {isDrawer ? <span className={styles.drawerPull} aria-hidden="true" /> : null}
+              </div>
+              <div className={styles.doorMeta}>
+                <span className={styles.doorName}>{m.name}</span>
+                <span className={styles.doorSku}>CL-{String(i + 1).padStart(2, '0')}</span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
   );
 }

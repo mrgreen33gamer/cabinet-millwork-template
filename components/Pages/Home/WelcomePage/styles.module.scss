@@ -129,108 +129,192 @@
   min-height: 280px;
 }
 
-// ── Materials mosaic ───────────────────────────────────────────────────────
+// ── Cabinet door / drawer sample cards ─────────────────────────────────────
 
-.mosaic {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(96px, 1fr);
-  gap: 0.7rem;
+.doorGrid {
   width: 100%;
-  max-width: 540px;
+  max-width: 560px;
   margin-left: auto;
+  padding: 0.9rem;
+  border-radius: 14px;
+  background:
+    linear-gradient(160deg, rgba(72, 48, 24, 0.28) 0%, rgba(18, 12, 8, 0.94) 60%),
+    $obsidian;
+  border: 1px solid rgba($orange, 0.22);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.42);
 
   @media (max-width: 960px) {
     margin: 0 auto;
-    max-width: 420px;
-    grid-auto-rows: minmax(84px, 1fr);
+    max-width: 460px;
   }
+}
+
+.doorGridHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0 0.2rem 0.65rem;
+  margin-bottom: 0.65rem;
+  border-bottom: 1px solid rgba($white, 0.08);
+}
+
+.doorGridTitle {
+  font-family: $textFont;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba($orange, 0.9);
+}
+
+.doorGridMeta {
+  font-family: $textFont;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba($white, 0.4);
+}
+
+.doorGridInner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
 
   @media (max-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.55rem;
   }
 }
 
-.tile {
-  position: relative;
+.doorCard {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba($white, 0.1);
+  border: 1px solid rgba($white, 0.12);
   background: rgba($white, 0.03);
-  min-height: 96px;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 
   &:hover {
-    border-color: rgba($orange, 0.35);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba($orange, 0.12);
+    border-color: rgba($orange, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   }
 }
 
-.tileWide {
-  grid-column: span 2;
-
-  @media (max-width: 480px) {
-    grid-column: span 1;
+.drawerCard {
+  .doorFace {
+    min-height: 72px;
   }
 }
 
-.tileTall {
-  grid-row: span 2;
-  min-height: 200px;
-
-  @media (max-width: 480px) {
-    grid-row: span 1;
-    min-height: 96px;
-  }
-}
-
-.tileFace {
+.doorFace {
   position: relative;
   flex: 1;
-  min-height: 64px;
+  min-height: 118px;
   overflow: hidden;
+  // Shaker inset frame feel
+  box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.18);
 }
 
-.tileImage {
+.doorImage {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(1.05) contrast(1.04);
 }
 
-.tileOverlay {
+.grainVeins {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 40%,
-    rgba($obsidian, 0.55) 100%
-  );
   pointer-events: none;
+  z-index: 1;
+  opacity: 0.28;
+  background:
+    repeating-linear-gradient(
+      94deg,
+      transparent 0 4px,
+      rgba(0, 0, 0, 0.1) 4px 5px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 22px,
+      rgba($white, 0.04) 22px 23px
+    );
+  mix-blend-mode: soft-light;
 }
 
-.tileName {
-  position: relative;
-  z-index: 1;
-  display: block;
-  padding: 0.45rem 0.65rem 0.55rem;
+.doorFrame {
+  position: absolute;
+  inset: 8px;
+  border: 1.5px solid rgba($white, 0.18);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.doorKnob {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f5d08a, #a16207 70%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  z-index: 3;
+}
+
+.drawerPull {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 5px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #d4a574, #8b5e34);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+
+.doorMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem 0.5rem 0.5rem;
+  background: rgba($obsidian, 0.82);
+  border-top: 1px solid rgba($white, 0.07);
+}
+
+.doorName {
   font-family: $textFont;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba($white, 0.85);
-  background: rgba($obsidian, 0.55);
-  border-top: 1px solid rgba($white, 0.06);
+  color: rgba($white, 0.9);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.doorSku {
+  font-family: $textFont;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba($orange, 0.75);
+}
+
+// Legacy stubs
+.mosaic, .tile, .tileWide, .tileTall, .tileFace, .tileImage, .tileOverlay, .tileName {
+  /* unused */
 }
 
 /* === UNIQUENESS IDENTITY LAYER — cabinet-millwork-template === */
@@ -288,3 +372,27 @@
 }
 
 /* end identity layer */
+
+/* === HERO PATTERN UNIQUENESS — cabinet-millwork-template === */
+.hero {
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba($white, 0.02) 40px, rgba($white, 0.02) 41px) !important;
+    background-size: auto !important;
+    opacity: 0.63 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: radial-gradient(ellipse 50% 40% at 36% 36%, rgba($orange, 0.054), transparent 70%), radial-gradient(ellipse 40% 50% at 63% 59%, rgba($white, 0.03), transparent 65%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+}
+/* end hero pattern */
