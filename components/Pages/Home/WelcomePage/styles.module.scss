@@ -129,191 +129,433 @@
   min-height: 280px;
 }
 
-// ── Cabinet door / drawer sample cards ─────────────────────────────────────
+// ── Craftline Shop Sample Board (unique — not materials grid / photo mosaic) ─
 
-.doorGrid {
+.sampleBoard {
   width: 100%;
-  max-width: 560px;
+  max-width: 420px;
   margin-left: auto;
-  padding: 0.9rem;
-  border-radius: 14px;
+  position: relative;
+  border-radius: 4px 4px 10px 10px;
   background:
-    linear-gradient(160deg, rgba(72, 48, 24, 0.28) 0%, rgba(18, 12, 8, 0.94) 60%),
-    $obsidian;
-  border: 1px solid rgba($orange, 0.22);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.42);
+    linear-gradient(180deg, #2a1c12 0%, #15100c 38%, #0e0b09 100%);
+  border: 1px solid rgba($orange, 0.28);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba($white, 0.06);
+  // Pegboard-ish texture unique to this board
+  background-image:
+    radial-gradient(circle at 8px 10px, rgba($white, 0.035) 1.2px, transparent 1.4px),
+    linear-gradient(180deg, #2a1c12 0%, #15100c 38%, #0e0b09 100%);
+  background-size: 18px 18px, 100% 100%;
+  overflow: hidden;
 
   @media (max-width: 960px) {
     margin: 0 auto;
-    max-width: 460px;
+    max-width: 400px;
   }
 }
 
-.doorGridHeader {
+.boardTopRail {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0 0.2rem 0.65rem;
-  margin-bottom: 0.65rem;
-  border-bottom: 1px solid rgba($white, 0.08);
+  padding: 0.55rem 0.85rem;
+  background: linear-gradient(180deg, #3a2818, #24180f);
+  border-bottom: 1px solid rgba($orange, 0.2);
 }
 
-.doorGridTitle {
-  font-family: $textFont;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba($orange, 0.9);
+.boardBolt {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d4a574, #6b4423 70%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
 }
 
-.doorGridMeta {
+.boardStamp {
   font-family: $textFont;
   font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba($orange, 0.85);
+}
+
+.boardHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem 0.55rem;
+}
+
+.boardEyebrow {
+  margin: 0 0 0.2rem;
+  font-family: $textFont;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: rgba($white, 0.4);
 }
 
-.doorGridInner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.7rem;
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.boardTitle {
+  margin: 0;
+  font-family: $titleFont;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: $white;
+  line-height: 1;
 }
 
-.doorCard {
+.boardLegend {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: $textFont;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba($white, 0.38);
+}
+
+.legendDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $orange;
+  box-shadow: 0 0 8px rgba($orange, 0.6);
+}
+
+.sampleList {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 0.75rem 0.65rem;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba($white, 0.12);
+  gap: 0.45rem;
+}
+
+.sampleRow {
+  display: grid;
+  grid-template-columns: 14px 64px 1fr;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.4rem 0.5rem 0.4rem 0.15rem;
+  border-radius: 6px;
   background: rgba($white, 0.03);
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba($white, 0.07);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
 
   &:hover {
-    border-color: rgba($orange, 0.4);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    border-color: rgba($orange, 0.35);
+    background: rgba($orange, 0.06);
+    transform: translateX(3px);
   }
 }
 
-.drawerCard {
-  .doorFace {
-    min-height: 72px;
-  }
-}
-
-.doorFace {
-  position: relative;
-  flex: 1;
-  min-height: 118px;
-  overflow: hidden;
-  // Shaker inset frame feel
-  box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.18);
-}
-
-.doorImage {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(1.05) contrast(1.04);
-}
-
-.grainVeins {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.28;
-  background:
-    repeating-linear-gradient(
-      94deg,
-      transparent 0 4px,
-      rgba(0, 0, 0, 0.1) 4px 5px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 22px,
-      rgba($white, 0.04) 22px 23px
-    );
-  mix-blend-mode: soft-light;
-}
-
-.doorFrame {
-  position: absolute;
-  inset: 8px;
-  border: 1.5px solid rgba($white, 0.18);
-  border-radius: 2px;
-  pointer-events: none;
-  z-index: 2;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
-}
-
-.doorKnob {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #f5d08a, #a16207 70%);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
-  z-index: 3;
-}
-
-.drawerPull {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 36px;
-  height: 5px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #d4a574, #8b5e34);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  z-index: 3;
-}
-
-.doorMeta {
+.hangTag {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  padding: 0.4rem 0.5rem 0.5rem;
-  background: rgba($obsidian, 0.82);
-  border-top: 1px solid rgba($white, 0.07);
+  align-items: center;
+  gap: 0;
+  height: 100%;
+  justify-content: flex-start;
+  padding-top: 0.15rem;
 }
 
-.doorName {
-  font-family: $textFont;
-  font-size: 0.64rem;
+.hangHole {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba($orange, 0.55);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hangWire {
+  width: 1.5px;
+  flex: 1;
+  min-height: 28px;
+  background: linear-gradient(180deg, rgba($orange, 0.5), rgba($white, 0.12));
+}
+
+// ── CSS-built door profiles (no stock photos) ──────────────────────────────
+
+.profileFace {
+  --door-tone: #c4a574;
+  --door-frame: #9a7b4f;
+  --door-sheen: #d9bc8a;
+  position: relative;
+  width: 64px;
+  height: 78px;
+  border-radius: 3px;
+  background: var(--door-frame);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 4px 10px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.profileOuter {
+  position: absolute;
+  inset: 5px;
+  background: var(--door-tone);
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.profileShaker {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 7px var(--door-frame);
+}
+.shakerPanel {
+  position: absolute;
+  inset: 8px;
+  background: linear-gradient(160deg, var(--door-sheen), var(--door-tone) 55%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.profileRaised {
+  position: absolute;
+  inset: 0;
+}
+.raisedBevel {
+  position: absolute;
+  inset: 9px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 40%),
+    linear-gradient(315deg, rgba(0, 0, 0, 0.28), transparent 45%),
+    var(--door-tone);
+  clip-path: polygon(0 0, 100% 0, 88% 12%, 12% 12%, 12% 88%, 88% 88%, 100% 100%, 0 100%);
+}
+.raisedCenter {
+  position: absolute;
+  inset: 16px;
+  background: linear-gradient(180deg, var(--door-sheen), var(--door-tone));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.profileSlab {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--door-sheen) 0%, var(--door-tone) 40%, var(--door-frame) 100%);
+}
+.slabGrain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    92deg,
+    transparent 0 3px,
+    rgba(0, 0, 0, 0.08) 3px 4px
+  );
+}
+.slabEdgePull {
+  position: absolute;
+  right: 0;
+  top: 18%;
+  bottom: 18%;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.profileBead {
+  position: absolute;
+  inset: 4px 6px;
+  display: flex;
+  gap: 3px;
+}
+.bead {
+  flex: 1;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--door-frame), var(--door-sheen) 40%, var(--door-tone));
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25), inset 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+.profileGlass {
+  position: absolute;
+  inset: 0;
+}
+.glassPane {
+  position: absolute;
+  inset: 8px;
+  background:
+    linear-gradient(135deg, rgba(180, 210, 230, 0.35), rgba(80, 120, 150, 0.15) 50%, rgba(20, 40, 60, 0.2)),
+    var(--door-tone);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+.glassMuntinH {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  background: var(--door-frame);
+  z-index: 2;
+}
+.glassMuntinV {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 50%;
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--door-frame);
+  z-index: 2;
+}
+
+.profileDrawers {
+  position: absolute;
+  inset: 5px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.drawerRow {
+  flex: 1;
+  background: linear-gradient(180deg, var(--door-sheen), var(--door-tone));
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.drawerCup {
+  width: 10px;
+  height: 4px;
+  border-radius: 0 0 5px 5px;
+  border: 1.5px solid rgba($white, 0.45);
+  border-top: none;
+  display: block;
+}
+
+.hardwareKnob {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f0d9a8, #8a6a32 70%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.hardwareBar {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #e8d4a8, #8a6a32);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  z-index: 3;
+}
+
+.sampleCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+  position: relative;
+  padding-right: 1.6rem;
+}
+
+.sampleNameRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.sampleName {
+  font-family: $headerFont;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: rgba($white, 0.9);
+  letter-spacing: 0.03em;
+  color: $white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.doorSku {
+.sampleSku {
   font-family: $textFont;
-  font-size: 0.5rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: rgba($orange, 0.75);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba($orange, 0.85);
+  flex-shrink: 0;
 }
 
-// Legacy stubs
-.mosaic, .tile, .tileWide, .tileTall, .tileFace, .tileImage, .tileOverlay, .tileName {
+.sampleFinish {
+  font-family: $textFont;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: rgba($white, 0.72);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sampleSpecies {
+  font-family: $textFont;
+  font-size: 0.58rem;
+  font-weight: 500;
+  color: rgba($white, 0.42);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toneChip {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.boardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.85rem 0.7rem;
+  font-family: $textFont;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba($white, 0.32);
+  border-top: 1px solid rgba($white, 0.06);
+}
+
+.boardFootRule {
+  width: 18px;
+  height: 1px;
+  background: rgba($orange, 0.35);
+}
+
+// Legacy stubs (shared fleet selectors / old archetype)
+.doorGrid, .doorCard, .doorFace, .doorImage, .mosaic, .tile, .tileWide, .tileTall,
+.tileFace, .tileImage, .tileOverlay, .tileName {
   /* unused */
 }
 
