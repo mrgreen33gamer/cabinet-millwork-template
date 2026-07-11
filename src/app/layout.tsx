@@ -108,7 +108,7 @@ export const metadata: Metadata = {
     siteName: "Craftline Cabinetry & Millwork",
     images: [
       {
-        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
+        url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`,
         width: 1200,
         height: 630,
         alt: "Craftline Cabinetry & Millwork — Waco TX Custom Cabinets",
@@ -122,7 +122,7 @@ export const metadata: Metadata = {
     title: "Craftline Cabinetry & Millwork | Waco TX Custom Cabinets",
     description:
       "Custom cabinets, kitchen millwork, vanities, commercial millwork & built-ins for Central Texas. Licensed & insured — 5-Year Craftsmanship Warranty.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
   robots: {
     index: true,

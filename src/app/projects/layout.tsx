@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     title: 'Projects Gallery | Craftline Cabinetry & Millwork',
     description: 'Custom cabinets and fine millwork for Central Texas homes and businesses.',
     url, siteName: 'Craftline Cabinetry & Millwork', locale: 'en_US', type: 'website',
-    images: [{ url: `${BASE_URL}/logos/scott-apps-banner.png`, alt: 'Craftline Cabinetry & Millwork projects — Waco TX' }],
+    images: [{ url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`, alt: 'Craftline Cabinetry & Millwork projects — Waco TX' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Projects Gallery | Craftline Cabinetry & Millwork', description: 'Custom cabinets and fine millwork for Central Texas.', images: [`${BASE_URL}/logos/scott-apps-banner.png`] },
+  twitter: { card: 'summary_large_image', title: 'Projects Gallery | Craftline Cabinetry & Millwork', description: 'Custom cabinets and fine millwork for Central Texas.', images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`] },
   robots: { index: true, follow: true },
 };
 

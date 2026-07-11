@@ -63,14 +63,14 @@ export default function HomePage() {
       title: "Cabinet Refacing",
       body: "New doors, drawer fronts, and hardware over solid boxes — a fraction of full replacement when boxes are sound.",
       link: "/services/cabinet-refacing",
-      image: "/pages/home/services/service-1.jpg",
+      image: "/pages/home/welcome/before.jpg",
     },
     {
       icon: faDoorOpen,
       title: "Closet & Built-Ins",
       body: "Walk-in closets, mudroom lockers, media walls, and office built-ins measured and built for how you live.",
       link: "/services/closet-built-ins",
-      image: "/pages/home/services/service-2.jpg",
+      image: "/pages/home/welcome/after.jpg",
     },
   ];
 
