@@ -1,241 +1,28 @@
-// Craftline Welcome Hero — unique "Shop Sample Board" visual (not Materials Grid).
-// Door profiles are CSS/SVG constructions (no repeating stock photos).
+// Craftline Welcome Hero — Custom Millwork Atelier
+// Photographic parallax stage + an authentic craftsman card replaces the
+// CSS-only "Shop Sample Board" door-profile mockups. Real shop photography,
+// amber/espresso brand tokens, Cormorant Garamond display headline.
+// Photos live in /public/pages/home/welcome (hero-shop-scene.jpg, hero-craftsman.jpg).
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
-type DoorProfile =
-  | 'shaker'
-  | 'raised'
-  | 'slab'
-  | 'beadboard'
-  | 'glass-lite'
-  | 'drawer-stack';
-
-type Sample = {
-  name: string;
-  finish: string;
-  species: string;
-  profile: DoorProfile;
-  /** base panel fill */
-  tone: string;
-  /** darker frame / edge */
-  frame: string;
-  /** highlight for grain / paint sheen */
-  sheen: string;
-  sku: string;
-};
-
-const SAMPLES: Sample[] = [
-  {
-    name: 'Shaker',
-    finish: 'Painted Linen',
-    species: 'Maple core',
-    profile: 'shaker',
-    tone: '#e8e2d6',
-    frame: '#c9c0b0',
-    sheen: '#f5f1e8',
-    sku: 'CL-SK-01',
-  },
-  {
-    name: 'Raised Panel',
-    finish: 'Medium Walnut',
-    species: 'Solid walnut',
-    profile: 'raised',
-    tone: '#6b4423',
-    frame: '#4a2f18',
-    sheen: '#8b5a2b',
-    sku: 'CL-RP-04',
-  },
-  {
-    name: 'Slab',
-    finish: 'Matte Graphite',
-    species: 'MDF paint-grade',
-    profile: 'slab',
-    tone: '#3d3a38',
-    frame: '#2a2826',
-    sheen: '#4f4b48',
-    sku: 'CL-SL-12',
-  },
-  {
-    name: 'Beadboard',
-    finish: 'White Oak Natural',
-    species: 'Rift white oak',
-    profile: 'beadboard',
-    tone: '#c4a574',
-    frame: '#9a7b4f',
-    sheen: '#d9bc8a',
-    sku: 'CL-BB-07',
-  },
-  {
-    name: 'Glass Lite',
-    finish: 'Espresso Stain',
-    species: 'Cherry',
-    profile: 'glass-lite',
-    tone: '#4a2c1a',
-    frame: '#2f1a0f',
-    sheen: '#6b3f26',
-    sku: 'CL-GL-09',
-  },
-  {
-    name: 'Drawer Bank',
-    finish: 'Honey Maple',
-    species: 'Hard maple',
-    profile: 'drawer-stack',
-    tone: '#d2a86a',
-    frame: '#a67c42',
-    sheen: '#e6c08a',
-    sku: 'CL-DR-03',
-  },
-];
-
-function DoorProfileFace({ sample }: { sample: Sample }) {
-  const { profile, tone, frame, sheen } = sample;
-
-  return (
-    <div
-      className={styles.profileFace}
-      style={
-        {
-          '--door-tone': tone,
-          '--door-frame': frame,
-          '--door-sheen': sheen,
-        } as React.CSSProperties
-      }
-      data-profile={profile}
-      aria-hidden="true"
-    >
-      {/* Outer stile / rail envelope */}
-      <div className={styles.profileOuter}>
-        {profile === 'shaker' && (
-          <div className={styles.profileShaker}>
-            <span className={styles.shakerPanel} />
-          </div>
-        )}
-        {profile === 'raised' && (
-          <div className={styles.profileRaised}>
-            <span className={styles.raisedBevel} />
-            <span className={styles.raisedCenter} />
-          </div>
-        )}
-        {profile === 'slab' && (
-          <div className={styles.profileSlab}>
-            <span className={styles.slabGrain} />
-            <span className={styles.slabEdgePull} />
-          </div>
-        )}
-        {profile === 'beadboard' && (
-          <div className={styles.profileBead}>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span key={i} className={styles.bead} />
-            ))}
-          </div>
-        )}
-        {profile === 'glass-lite' && (
-          <div className={styles.profileGlass}>
-            <span className={styles.glassMuntinH} />
-            <span className={styles.glassMuntinV} />
-            <span className={styles.glassPane} />
-          </div>
-        )}
-        {profile === 'drawer-stack' && (
-          <div className={styles.profileDrawers}>
-            <span className={styles.drawerRow}>
-              <i className={styles.drawerCup} />
-            </span>
-            <span className={styles.drawerRow}>
-              <i className={styles.drawerCup} />
-            </span>
-            <span className={styles.drawerRow}>
-              <i className={styles.drawerCup} />
-            </span>
-          </div>
-        )}
-      </div>
-      {/* Hardware — unique per profile family */}
-      {profile === 'drawer-stack' ? null : (
-        <span
-          className={
-            profile === 'slab' ? styles.hardwareBar : styles.hardwareKnob
-          }
-        />
-      )}
-    </div>
-  );
-}
-
-function ShopSampleBoard() {
-  return (
-    <div className={styles.sampleBoard} aria-label="Craftline door style sample board">
-      <div className={styles.boardTopRail} aria-hidden="true">
-        <span className={styles.boardBolt} />
-        <span className={styles.boardStamp}>CRAFTLINE · WACO SHOP</span>
-        <span className={styles.boardBolt} />
-      </div>
-
-      <header className={styles.boardHeader}>
-        <div>
-          <p className={styles.boardEyebrow}>In-shop sample rack</p>
-          <h2 className={styles.boardTitle}>Door Profiles</h2>
-        </div>
-        <div className={styles.boardLegend} aria-hidden="true">
-          <span className={styles.legendDot} />
-          <span>Finish · Species · SKU</span>
-        </div>
-      </header>
-
-      <ul className={styles.sampleList} role="list">
-        {SAMPLES.map((sample, i) => (
-          <motion.li
-            key={sample.sku}
-            className={styles.sampleRow}
-            role="listitem"
-            initial={{ opacity: 0, x: 18 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.42,
-              delay: 0.28 + i * 0.06,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <div className={styles.hangTag} aria-hidden="true">
-              <span className={styles.hangHole} />
-              <span className={styles.hangWire} />
-            </div>
-
-            <DoorProfileFace sample={sample} />
-
-            <div className={styles.sampleCopy}>
-              <div className={styles.sampleNameRow}>
-                <span className={styles.sampleName}>{sample.name}</span>
-                <span className={styles.sampleSku}>{sample.sku}</span>
-              </div>
-              <span className={styles.sampleFinish}>{sample.finish}</span>
-              <span className={styles.sampleSpecies}>{sample.species}</span>
-              <div
-                className={styles.toneChip}
-                style={{ background: sample.tone, borderColor: sample.frame }}
-                title={sample.finish}
-                aria-hidden="true"
-              />
-            </div>
-          </motion.li>
-        ))}
-      </ul>
-
-      <footer className={styles.boardFoot} aria-hidden="true">
-        <span>Bring samples to your lighting</span>
-        <span className={styles.boardFootRule} />
-        <span>Free design consult</span>
-      </footer>
-    </div>
-  );
-}
-
 export default function WelcomePage() {
+  const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked parallax on the background photo. Disabled under reduced-motion.
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', reduceMotion ? '0%' : '14%']);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.06, reduceMotion ? 1.06 : 1.14]);
+
   const badgeText = "Waco's Trusted Custom Cabinet Shop — Since 2008";
   const headlineLines = ['Cabinets Built.', 'Built Right.'];
   const headlineAccent = 'Craftline.';
@@ -252,7 +39,24 @@ export default function WelcomePage() {
   ];
 
   return (
-    <section className={styles.hero} aria-label="Hero">
+    <section ref={heroRef} className={styles.hero} aria-label="Hero">
+      {/* Photographic parallax background — real shop-floor scene */}
+      <motion.div
+        className={styles.bgLayer}
+        style={{ y: bgY, scale: bgScale }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/pages/home/welcome/hero-shop-scene.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+        />
+      </motion.div>
+      {/* Espresso scrim keeps the headline legible and on-brand */}
+      <div className={styles.scrim} aria-hidden="true" />
       <div className={styles.shard} aria-hidden="true" />
 
       <div className={styles.layout}>
@@ -319,13 +123,38 @@ export default function WelcomePage() {
           </motion.div>
         </div>
 
+        {/* Authentic shop photo — the ownable image, framed as a spec card */}
         <motion.div
           className={styles.visual}
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.65, delay: 0.2, ease: 'easeOut' }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
         >
-          <ShopSampleBoard />
+          <div className={styles.photoCard}>
+            <Image
+              src="/pages/home/welcome/hero-craftsman.jpg"
+              alt="Craftline craftsman hand-finishing a custom cabinet door with a chisel in the Waco shop"
+              fill
+              priority
+              sizes="(max-width: 960px) 88vw, 460px"
+              className={styles.photo}
+            />
+            <div className={styles.photoGlaze} aria-hidden="true" />
+
+            <div className={styles.photoBadge}>
+              <span className={styles.photoBadgeDot} />
+              In the Shop · Waco, TX
+            </div>
+
+            <div className={styles.specCard}>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> Flat-rate quotes, no surprises
+              </span>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> 5-Year Craftsmanship Warranty
+              </span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
